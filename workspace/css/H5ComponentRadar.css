@@ -1,1 +1,33 @@
-/* 雷达图组件样式 */
+.h5_component_radar {
+    position: absolute;
+    background-size: 100%;
+    background-repeat: repeat;
+}
+.h5_component_radar canvas {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.h5_component_radar .text {
+  position: absolute;
+  transition: all .5s;
+}
+
+/* css3 也可以做这个动画
+.h5_component_radar canvas:last-child {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.h5_component_radar_load canvas:last-child {
+    transition:all 1s 0.5s;
+    transform: scale(1);
+}
+.h5_component_radar_leave canvas:last-child {
+    transition:all 1s ;
+    transform: scale(0);
+}
+*/

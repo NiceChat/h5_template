@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 
-    <title>IT教育网2015课程学习情况</title>
+    <title>饼图</title>
 
     <style type="text/css">
         body{
@@ -23,28 +23,64 @@
             top: 50%;
             margin: -270px 0 0 -170px;
         }
+
     </style>
 
     <script type="text/javascript" src="../js/lib/jquery.js"></script>
     <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
 
-
-    <!-- 引入饼图的资源 -->
     <script type="text/javascript" src="../js/H5ComponentPie.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentPie.css">
 
     <body>
-        <!-- 用于开发测试 H5ComponentPie 对象（饼图组件） -->
+        <!-- 用于开发测试 H5ComponentBase 对象（基本的图文组件） -->
         <div class="iphone">
-
         </div>
 
         <script type="text/javascript">
-
-
+            var cfg = {
+                type: 'pie',
+                width: 400,
+                height: 400,
+                center: true,
+                // animateIn: { bottom: 130, opacity: 1},
+                // animateOut: { bottom: 0, opacity: 0},
+                data:[
+                    // ['javascript', 0.4, '#f84545'],
+                    // ['CSS3', 0.2, 'rgba(248, 69, 69, 0.8)'],
+                    // ['HTML5', 0.2, 'rgba(248, 69, 69, 0.63)'],
+                    // ['Vue', 0.1, '#f69c9c'],
+                    // ['PHP', 0.2, 'rgba(189, 98, 252, 0.63)'],
+                    ['javascript', 0.5, '#f84545'],
+                    ['CSS3', 0.2, 'rgba(248, 69, 69, 0.8)'],
+                    ['HTML5', 0.1, 'rgba(248, 69, 69, 0.63)'],
+                    ['Vue', 0.1, '#f69c9c'],
+                    ['PHP', 0.1, 'rgba(246, 156, 156, 0.5)']
+                ],
+                css: {
+                    top: 100,
+                    opacity: 0
+                },
+                animateIn: {
+                    top: 200,
+                    opacity: 1
+                },
+                animateOut: {
+                    top: 100,
+                    opacity: 0
+                }
+            }
+            var h5 = new H5ComponentPie('pie', cfg)
+            $('.iphone').append(h5)
+            var leave = false
+            setTimeout(function (){
+                $('.h5_component').trigger('onLoad')  
+            })
+            $('body').click(function () {
+                leave = !leave
+                $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad')
+            })
         </script>
-
     </body>
-
 </html>

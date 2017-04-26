@@ -23,6 +23,7 @@
             top: 50%;
             margin: -270px 0 0 -170px;
         }
+
     </style>
 
     <script type="text/javascript" src="../js/lib/jquery.js"></script>
@@ -32,14 +33,29 @@
     <body>
         <!-- 用于开发测试 H5ComponentBase 对象（基本的图文组件） -->
         <div class="iphone">
-
         </div>
 
         <script type="text/javascript">
-
-
+            var cfg = {
+                type: 'base',
+                bg: './p1_people.png',
+                width: 515,
+                height: 305,
+                center: true,
+                animateIn: { bottom: 80, opacity: 1},
+                animateOut: { bottom: 0, opacity: 0},
+                css: {
+                    left: 20,
+                    bottom: 80
+                }
+            }
+            var h5 = new H5ComponentBase('myName', cfg)
+            $('.iphone').append(h5)
+            var leave = false
+            $('body').click(function () {
+                leave = !leave
+                $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad')
+            })
         </script>
-
     </body>
-
 </html>

@@ -1,1 +1,5 @@
-/* 基本图文组件样式 */
+.h5_component_base {
+    position: absolute;
+    background-size: 100%;
+    background-repeat: repeat;
+}

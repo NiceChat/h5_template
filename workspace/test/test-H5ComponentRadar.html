@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1">
 
-    <title>IT教育网2015课程学习情况</title>
+    <title>慕课网2015课程学习情况</title>
 
     <style type="text/css">
         body{
@@ -23,28 +23,57 @@
             top: 50%;
             margin: -270px 0 0 -170px;
         }
+
     </style>
 
     <script type="text/javascript" src="../js/lib/jquery.js"></script>
     <script type="text/javascript" src="../js/H5ComponentBase.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentBase.css">
 
-
-    <!-- 引入雷达图的资源 -->
     <script type="text/javascript" src="../js/H5ComponentRadar.js"></script>
     <link rel="stylesheet" type="text/css" href="../css/H5ComponentRadar.css">
 
     <body>
-        <!-- 用于开发测试 H5ComponentRadar 对象（雷达图组件） -->
+        <!-- 用于开发测试 H5ComponentBase 对象（基本的图文组件） -->
         <div class="iphone">
-
         </div>
 
         <script type="text/javascript">
-
-
+            var cfg = {
+                type: 'radar',
+                width: 400,
+                height: 400,
+                center: true,
+                data:[
+                    ['javascript', 0.9, '#ff6767'],
+                    ['CSS3', 0.8],
+                    ['HTML5', 0.9],
+                    ['Vue', 0.6],
+                    ['PHP', 0.9]
+                ],
+                css: {
+                    top: 100,
+                    opacity: 0
+                },
+                animateIn: {
+                    top: 200,
+                    opacity: 1
+                },
+                animateOut: {
+                    top: 100,
+                    opacity: 0
+                }
+            }
+            var h5 = new H5ComponentRadar('radar', cfg)
+            $('.iphone').append(h5)
+            var leave = false
+            setTimeout(function (){
+                $('.h5_component').trigger('onLoad')  
+            })
+            $('body').click(function () {
+                leave = !leave
+                $('.h5_component').trigger(leave ? 'onLeave' : 'onLoad')
+            })
         </script>
-
     </body>
-
 </html>

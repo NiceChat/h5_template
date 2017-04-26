@@ -25,21 +25,61 @@
     <script type="text/javascript" src="../js/lib/jquery.fullPage.js"></script>
 
     <script type="text/javascript">
-
         $(function (){
-            
+            // 设置h5执行fullpage
+            $('#h5').fullpage({
+                'sectionsColor': ['#254875', '#00ff00', '#254587'],
+                onLeave: function (index, nextIndex, direction) {
+                    $('#h5').find('.page').eq(index-1).trigger('onLeave')
+                },
+                afterLoad: function (anchorLink, index) {
+                    $('#h5').find('.page').eq(index-1).trigger('onLoad')
+                }
+            });
+
+            // 给每个页面添加上自定义事件
+            $('.page').on('onLeave', function () {
+                console.log($(this).attr('id'),'====>','onLeave')
+                $(this).find('.component').trigger('onLeave')
+            })
+
+            // 给每个页面添加上自定义事件
+            $('.page').on('onLoad', function () {
+                console.log($(this).attr('id'),'====>','onLoad')
+                $(this).find('.component').trigger('onLoad')
+            })
 
 
+            // 组件的onLeave
+            $('.component').on('onLeave', function () {
+                $(this).fadeOut()
+                return false
+            })
+
+            // 组件的onLoad
+            $('.component').on('onLoad', function () {
+                $(this).fadeIn()
+                return false
+            })
         });
 
     </script>
 
     <body>
     <!-- 用于验证 fullpage.js 切换页面，以及内容组织结构可用，组件能够进行动画 -->
-
         <div id="h5">
+            <div class="page section" id="page-1">
+                <div class="component log">Logo</div>
+                <div class="component slogan">slogan</div>
+            </div>
+            <div class="page section" id="page-2">
+                <div class="component desc">desc</div>
+            </div>
+            <div class="page section" id="page-3">
+                <div class="component bar">
+                    柱状图
+                </div>
+            </div>
         </div>
-
     </body>
-
 </html>
